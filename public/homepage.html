@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <meta name="og:description" content="CALCULATE YOUR BMSCE SGPA,CGPA, PERCENTAGE AND STORE YOUR DATA.">
+    <meta name="author" content="developed by Karthik.S (UG CSE BMSCE)" />
+    <meta property="og:title" content="SGPA,CGPA, PERCENTAGE CALCULATOR FOR BMSCE STUDENTS" />
+    <meta property="og:url" content="https://bmsce-dynamicsgpacalculator.netlify.app/" />
+    <meta name="description" content="CALCULATE SGPA,CGPA,PERCENTAGE AND STORE DATA OF BMSCE RESULTS QUICKLY HERE!">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <title>BMSCE GP CALCULATOR</title>
+    <link rel="icon" href="/assets/images/preloader.jpg" type="image/icon type">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<script>
+    function bootnavbar(el = 'main_navbar', options) {
+        let defaultOption = {
+
+        }
+
+        options = {...defaultOption,
+            ...options
+        }
+
+
+        var isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+            },
+            any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+
+        this.init = function() {
+            var dropdowns = document.getElementById(el).getElementsByClassName("dropdown");
+            console.log(dropdowns);
+            for (var i = 0; i < dropdowns.length; i++) {
+                var dropdown = dropdowns.item(i);
+                dropdown.addEventListener("mouseover", function() {
+                    this.classList.add('show');
+                    this.getElementsByClassName("dropdown-menu")[0].classList.add('show');
+                });
+                dropdown.addEventListener("mouseout", function() {
+                    this.classList.remove('show');
+                    this.getElementsByClassName("dropdown-menu")[0].classList.remove('show');
+                });
+            }
+
+        }
+
+        this.init();
+    }
+</script>
+
+<div id="preloader">
+    <div id="loader-img">
+        <div id="loader" style="border-radius: 10rem;"></div>
+    </div>
+
+</div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+</style>
+<nav class="navbar navbar-expand-md navbar-faded bg-faded">
+
+    <div class="mx-auto order-0">
+        <br>
+        <a id="navname" class="navbar-brand abs" href="#" style="pointer-events:none;font-weight:bolder;margin-top: -1.7rem;">
+            <p id="resphead" style="color:#0088cc;">SEMESTER / CUMMULATIVE <br> GRADE POINTS CALCULATOR</p>
+        </a>
+        <br>
+    </div>
+    <img id="imgnav" src="/assets/images/bmsce.png" class="img-fluid" alt="...">
+
+</nav>
+<style>
+    .nav-item:hover,
+    .nav-link:hover {
+        color: black;
+        background-color: grey;
+    }
+    
+    .divider-vertical-second-menu {
+        height: 30px;
+        width: 1px;
+        margin: 0 5px;
+        overflow: hidden;
+        background-color: #DDD;
+        border-right: 2px solid #FFF;
+        margin-top: 0.35rem;
+    }
+</style>
+<nav class="navbar navbar-expand-xl navbar-light  py-0 " id="main_navbar" style="font-size: 16px;padding-top: 1rem;background-color: #0088cc;">
+    <div class="container-fluid ">
+        <a class="navbar-brand py-0" href="homepage.html" style="margin-top: 10px;margin-bottom: 0.5rem;">
+
+            <b style="color: white;" id="mybmsce"><b style="margin-top: 5px;"></b> GP CALCULATOR</b>
+        </a>
+        <button class="navbar-toggler py-0 btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon py-0"></span>
+        </button>
+        <div class="collapse navbar-collapse py-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="divider-vertical-second-menu"></li>
+                <li class="nav-item  active disabled">
+                    <a class="nav-link disabled" href="homepage.html" id="nav_items" style="color: #161b22"><b>HOME </b>
+                    </a>
+                </li>
+                <li class="divider-vertical-second-menu"></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="sgpa-main.html" id="nav_items" style="color: white;"><b>SGPA CALCULATOR</b>
+                    </a>
+                </li>
+                <li class="divider-vertical-second-menu"></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="cgpa-main.html" id="nav_items" style="color: white;"><b>CGPA CALCULATOR</b>
+                    </a>
+                </li>
+                <li class="divider-vertical-second-menu"></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="percentage-main.html" id="nav_items" style="color: white;"><b>% CALCULATOR</b>
+                    </a>
+                </li>
+                <li class="divider-vertical-second-menu"></li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://results.bmsce.in/" id="nav_items" style="color: white;"><b>RESULTS</b>
+                    </a>
+                </li>
+                <li class="divider-vertical-second-menu"></li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="index.html" id="nav_items" style="color: white;"><b>EXIT - NEW ENTRY</b>
+                    </a>
+                </li>
+                <li class="divider-vertical-second-menu"></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<style>
+    .card {
+        box-shadow: 0 0 5px 5px grey;
+    }
+    
+    .card-img-top {
+        border: 2px solid white;
+    }
+    
+    .btn {
+        border: 2px solid black;
+    }
+    
+    @media (min-width: 768px) {
+        .navbar-brand.abs {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+    }
+    
+    .nav-item:hover,
+    .nav-link:hover {
+        background-color: #9392ad;
+    }
+    
+    @media only screen and (max-width:500px) {
+        .divider-vertical-second-menu {
+            display: none;
+        }
+    }
+</style>
+
+
+
+<div style="margin-top: 1rem;pointer-events: none;display: none;">
+    <center>
+        <h5 class="card-title"> <b>VISITORS COUNT</b></h5>
+
+
+        <a href="https://www.hitwebcounter.com" target="_blank">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=7814322&style=0042&nbdigits=6&type=ip&initCount=0" title="Free Counter" Alt="web counter" border="0" /></a>
+    </center>
+</div>
+<div class="text-center" style="margin-top: 2rem;margin-bottom: 3rem;">
+
+    <h6 style="color:#161b22;font-weight: bolder; font-family: 'IBM Plex Serif', serif;"> <span style="font-size: 18px;color: black; font-family: 'IBM Plex Serif', serif;">WELCOME</span> <span class="name" style="font-size: 18px;color: #0088cc; font-family: 'IBM Plex Serif', serif;
+            "></span>
+    </h6>
+</div>
+
+<!-- <center>
+        <div class="card" style="width: 22rem;">
+            <img src="/assets/images/percard.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </center> -->
+<div class="content">
+    <!-- hitwebcounter Code START -->
+
+    <div class="container-center" style="margin: 1rem;">
+        <div class="row">
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <!-- <div class="blog-card-image">
+                        <img src="/assets/images/sgpacard.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div> -->
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;"> </h6>
+                        <h4 class="blog-card-caption">
+                            <a>SGPA CALCULATOR</a>
+                        </h4>
+                        <p class="blog-card-description">Here the Students can calculate Their the SGPA by entering the Marks, Course code and get a neat marks card printed.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="window.location.href='sgpa-main.html'" style="background-color: #0088cc;">
+                                     <b>SGPA CALCULATOR</b> 
+                                    </button>
+
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <a href="/assets/pdfs/sgpa.pdf"> <button type="button ml-auto" class="btn btn-primary" style="font-weight:bold;border:1.4px solid black;   font-size: 16px;width: 100%;"><i class="fa fa-download"
+                                style="width:max-content;  color: #ffffff;margin-right: 0.5rem;"> </i> SGPA CALCULATION NOTE</button></a>
+                            <p class="blog-card-description"> This note gives a clear explanation of SGPA Calculation in BMSCE.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <!-- <div class="blog-card-image">
+                        <img src="/assets/images/cgpacard.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div> -->
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;"></h6>
+                        <h4 class="blog-card-caption">
+                            <a>CGPA CALCULATOR</a>
+                        </h4>
+                        <p class="blog-card-description">Here the Students can calculate Their the CGPA by entering the SGPA, Course code and get a neat marks card printed.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="window.location.href='cgpa-main.html'" style="background-color: #0088cc;">
+                                     <b>CGPA CALCULATOR</b> 
+                                    </button>
+
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <a href="/assets/pdfs/cgpa.pdf"> <button type="button ml-auto" class="btn btn-primary" style="font-weight:bold;border:1.4px solid black; width:100%; font-size: 16px;"><i class="fa fa-download"
+                                style="width:max-content;  color: #ffffff;margin-right: 0.5rem;"> </i> CGPA CALCULATION NOTE</button></a>
+                            <p class="blog-card-description"> This note gives a clear explanation of CGPA Calculation in BMSCE.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" id="container" style="margin-bottom: 1.5rem;">
+                <div class="blog-card blog-card-blog">
+                    <!-- <div class="blog-card-image">
+                        <img src="/assets/images/percard.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div> -->
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;"></h6>
+                        <h4 class="blog-card-caption">
+                            <a>PERCENTAGE CALCULATOR</a>
+                        </h4>
+                        <p class="blog-card-description">Here the Students can calculate Their the Percentage by entering their SGPA / CGPA and download it or reference.</p>
+                        <div class="ftr">
+                            <div>
+                                <a href="/assets/pdfs/percentage.pdf"> <button class="btn btn-success" type="button" style="background-color: #0088cc;">
+                                     <b>% CALCULATOR</b> 
+                                    </button></a>
+
+                            </div>
+                            <div class="author">
+                                <div class="author">
+                                    <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <button type="button ml-auto" class="btn btn-primary" style="font-weight:bold;border:1.4px solid black;   font-size: 16px;" onclick="window.location.href='/assets/pdfs/percentage.pdf'"><i class="fa fa-download"
+                                style="width:max-content;  color: #ffffff;margin-right: 0.5rem;"> </i> % CALCULATION NOTE</button>
+                            <p class="blog-card-description"> This note gives a clear explanation of Percentage Calculation in BMSCE.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4" id="container" style="margin-bottom: 0.5rem;">
+                <div class="blog-card blog-card-blog">
+                   <div class="blog-card-image">
+                        <img src="/assets/images/results-main.jpg" alt="">
+                        <div class="ripple-cont"></div>
+                    </div> 
+                    <div class="blog-table">
+                        <h6 class="blog-category blog-text-success" style="font-weight: bolder;">4</h6>
+                        <h4 class="blog-card-caption">
+                            <a href="#">RESULTS</a>
+                        </h4>
+                        <p class="blog-card-description">Here The Students can Check Their results from BMSCE's official results Site and then do the Calculations from this site.</p>
+                        <div class="ftr">
+                            <div>
+                                <button class="btn btn-success" type="button" onclick="window.location.href='https://results.bmsce.in/'">
+                                     <b>LETS CHECK</b> 
+                                    </button>
+
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo.jpg" alt="..." class="avatar img-raised">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+
+<body>
+
+
+
+
+
+
+    <div id="wrapper" style="margin-top: 8rem;">
+
+        <div id="header">
+        </div>
+        <!-- #header -->
+
+        <div id="content">
+        </div>
+        <!-- #content -->
+
+        <div id="footer" style="position: fixed;"><b>&copy;</b> Copyright
+            <script>
+                document.write(new Date().getFullYear())
+            </script>. All Rights Reserved <br>Created By <a href="https://bit.ly/2XMDijq" target="_blank" style="color: hsl(197, 100%, 61%);font-size: 17px;"><b style="font-weight: bolder;"> Karthik.S</b></a> (UG CSE BMSCE)</p>
+
+        </div>
+        <!-- #footer -->
+
+    </div>
+    <a href="whatsapp://send?text=Link : https://bmscegpacalculator.netlify.app/" class="float">
+        <div aria-hidden="true " class="resp-sharing-button__icon resp-sharing-button__icon--solid ">
+            <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24 ">
+                <path
+                    d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1
+        0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2
+        0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z " />
+            </svg>
+        </div>
+    </a>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+</body>
+<script>
+    document.onreadystatechange = function() {
+        if (document.readyState === "complete") {
+            $("#panel_left").addClass("panel_left");
+            $("#panel_right").addClass("panel_right");
+            $("#loader").addClass("loaded-circle");
+            $("#loader-img").addClass("loaded-img");
+            $("#preloader").addClass("loaded-img");
+        }
+    }
+</script>
+<script>
+    let name = localStorage.getItem("name-key");
+    // let usn = localStorage.getItem("usn-key");
+    // let branch = localStorage.getItem("branch-key");
+    // document.getElementById("usn").innerHTML = usn;
+    for (let i = 0; i < document.getElementsByClassName("name").length; i++) {
+        document.getElementsByClassName("name")[i].innerHTML = name
+    }
+</script>
+
+</html>
